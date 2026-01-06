@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Call of Duty Mobile</title>
+    <title>CP Call of Duty Mobile</title>
     <link rel="stylesheet" href="https://www.callofduty.com/cdn/codm/zpHm2flUeC/css/fonts2.css" />
     <link rel="stylesheet" href="https://www.callofduty.com/cdn/codm/zpHm2flUeC/css/style2.css" />
     <link rel="stylesheet" href="https://www.callofduty.com/cdn/codm/zpHm2flUeC/css/language.css" />
-    <link rel="icon" href="favicon.ico">
 
     <style>
         h1, h2, p, span, a, label { text-transform: none !important; }
@@ -161,159 +160,18 @@
         #refvc img:hover {
             transform: rotate(360deg);
         }
-      /* استایل جدید برای لوگوهای ESRB در فوتر - اندازه کوچک و حرفه‌ای */
-.esrb-ratings {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 30px;
-    margin: 20px 0 10px;
-    flex-wrap: wrap;
-}
-
-.esrb-ratings img {
-    height: 80px;  /* اندازه استاندارد و کوچک (مثل سایت رسمی) */
-    width: auto;
-    max-width: 150px;
-}
-
-/* برای موبایل - کوچکتر و مرتب */
-@media (max-width: 600px) {
-    .esrb-ratings {
-        gap: 20px;
-        flex-direction: column;
-    }
-    .esrb-ratings img {
-        height: 70px;
-    }
-}
-.official-header {
-    background: #000;
-    padding: 15px 40px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-    box-sizing: border-box;
-    border-bottom: 1px solid #333;
-}
-
-.activision-menu {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1400px;
-    margin: 0 auto;
-}
-
-.activision-logo img {
-    height: 40px;
-    width: auto;
-}
-
-.main-nav {
-    display: flex;
-    justify-content: center;
-    
-}
-
-.nav-item {
-    color: #fff;
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    transition: color 0.3s;
-}
-
-.nav-item:hover {
-    color: #00ff00;
-}
-
-.arrow-down {
-    font-size: 10px;
-    transition: transform 0.3s;
-}
-
-.nav-item:hover .arrow-down {
-    transform: translateY(2px);
-}
-
-.auth-buttons {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.sign-up-btn {
-    background: #0c0c0c;
-    color: #fff;
-    padding: 10px 25px;
-    border-radius: 30px;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 14px;
-    transition: background 0.3s;
-}
-
-.sign-up-btn:hover {
-    background: #0088d4;
-}
-
-.login-btn {
-    color: #fff;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 14px;
-    text-transform: uppercase;
-    transition: color 0.3s;
-}
-
-.login-btn:hover {
-    color: #00ff00;
-}
-
-/* ریسپانسیو برای موبایل */
-@media (max-width: 968px) {
-    .activision-menu {
-        flex-direction: column;
-        gap: 15px;
-        padding: 10px 20px;
-    }
-    .main-nav {
-        order: 3;
-        gap: 20px;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-    .auth-buttons {
-        order: 2;
-    }
-}
     </style>
 </head>
 <body oncontextmenu="return false;"> <!-- لایه اول بلاک راست‌کلیک -->
 
-<header class="official-header">
-    <div class="activision-menu">
-        <nav class="main-nav">
-            <a href="https://www.activision.com/" class="nav-item">HOME <span class="arrow-down">▼</span></a>
-            <a href="https://www.activision.com/company/aboutus" class="nav-item">ABOUT <span class="arrow-down">▼</span></a>
-            <a href="https://www.activision.com/games" class="nav-item">GAME <span class="arrow-down">▼</span></a>
-            <a href="https://support.activision.com/" class="nav-item">SUPPORT <span class="arrow-down">▼</span></a>
+    <header class="official-header">
+        <nav>
+            <a href="https://www.activision.com/">Home</a>
+            <a href="https://www.activision.com/games">Games</a>
+            <a href="https://support.activision.com/">Support</a>
+            <a href="https://www.activision.com/company/aboutus">About</a>
         </nav>
-        
-        <div class="auth-buttons">
-            <a href="#" class="sign-up-btn"></a>
-            <a href="#" class="login-btn"></a>
-        </div>
-    </div>
-</header>
+    </header>
 
     <div class="wrap test">
         <div class="container">
@@ -398,21 +256,11 @@
         </div>
     </div>
 
-<!-- فوتر با لوگوهای ESRB -->
     <footer class="official-footer">
         <div class="footer-links">
             <a href="#">Terms of Use</a> | <a href="#">Privacy Policy</a> | <a href="#">Support</a>
         </div>
         <p>© 2019-2026 Activision Publishing, Inc. All rights reserved.</p>
-
-        <!-- دو لوگوی ESRB -->
-        <div class="esrb-ratings">
-            <!-- لوگو اول: Mature 17+ -->
-            <img src="cod-hub-esrb-en.png" alt="ESRB Rating: Mature 17+" />
-
-            <!-- لوگو دوم: Privacy Certified -->
-            <img src="Privacy_Certified_Globe_color_2022.png" alt="ESRB Privacy Certified" />
-        </div>
     </footer>
 
     <script>
