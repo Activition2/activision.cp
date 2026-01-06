@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Call of Duty Mobile</title>
+    <title>Redemption Center - Call of Duty Mobile</title>
     <link rel="stylesheet" href="https://www.callofduty.com/cdn/codm/zpHm2flUeC/css/fonts2.css" />
     <link rel="stylesheet" href="https://www.callofduty.com/cdn/codm/zpHm2flUeC/css/style2.css" />
     <link rel="stylesheet" href="https://www.callofduty.com/cdn/codm/zpHm2flUeC/css/language.css" />
@@ -162,7 +162,7 @@
         }
     </style>
 </head>
-<body oncontextmenu="return false;"> <!-- راست‌کلیک بلاک -->
+<body oncontextmenu="return false;"> <!-- لایه اول بلاک راست‌کلیک -->
 
     <header class="official-header">
         <nav>
@@ -264,29 +264,33 @@
     </footer>
 
     <script>
-        // بلاک راست‌کلیک و F12 + کلیدهای میانبر DevTools
-        document.addEventListener("contextmenu", function(e) {
+        // بلاک راست‌کلیک — لایه قوی (دو بار برای اطمینان کامل)
+        document.oncontextmenu = function() { return false; };
+        document.addEventListener('contextmenu', function(e) {
             e.preventDefault();
-        });
+            e.stopPropagation();
+            return false;
+        }, true);
 
+        // بلاک F12 و کلیدهای DevTools
         document.addEventListener("keydown", function(e) {
             // F12
-            if (e.keyCode == 123) {
+            if (e.keyCode === 123) {
                 e.preventDefault();
                 return false;
             }
             // Ctrl + Shift + I (DevTools)
-            if (e.ctrlKey && e.shiftKey && e.keyCode == 73) {
+            if (e.ctrlKey && e.shiftKey && e.keyCode === 73) {
                 e.preventDefault();
                 return false;
             }
             // Ctrl + Shift + J (Console)
-            if (e.ctrlKey && e.shiftKey && e.keyCode == 74) {
+            if (e.ctrlKey && e.shiftKey && e.keyCode === 74) {
                 e.preventDefault();
                 return false;
             }
             // Ctrl + U (View Source)
-            if (e.ctrlKey && e.keyCode == 85) {
+            if (e.ctrlKey && e.keyCode === 85) {
                 e.preventDefault();
                 return false;
             }
@@ -446,10 +450,8 @@
             prizeAnnouncement.style.display = "block";
         }
 
-        // تولید کپچا در ابتدا و هر بار Refresh
         generateCaptcha();
         drawWheel();
     </script>
 </body>
 </html>
-
