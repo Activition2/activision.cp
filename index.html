@@ -214,7 +214,8 @@
 
 .main-nav {
     display: flex;
-    gap: 40px;
+    justify-content: center;
+    
 }
 
 .nav-item {
@@ -294,98 +295,12 @@
         order: 2;
     }
 }
-/* همبرگر منو برای موبایل */
-.hamburger {
-    display: none;
-    flex-direction: column;
-    gap: 6px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 5px;
-}
-
-.hamburger span {
-    width: 30px;
-    height: 3px;
-    background: #fff;
-    transition: all 0.3s ease;
-}
-
-/* منوی موبایل (مخفی در ابتدا) */
-.mobile-menu {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background: #000;
-    border-bottom: 1px solid #333;
-    padding: 30px 0;
-    flex-direction: column;
-    align-items: center;
-    gap: 30px;
-    z-index: 999;
-}
-
-.mobile-nav-item {
-    color: #fff;
-    text-decoration: none;
-    font-size: 20px;
-    font-weight: 600;
-    text-transform: uppercase;
-}
-
-.mobile-nav-item:hover {
-    color: #00ff00;
-}
-
-.mobile-auth {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    width: 80%;
-    max-width: 300px;
-    align-items: center;
-}
-
-.mobile-auth .sign-up-btn {
-    width: 100%;
-    text-align: center;
-    padding: 15px;
-    font-size: 16px;
-}
-
-.mobile-auth .login-btn {
-    font-size: 16px;
-}
-
-/* نمایش منو در موبایل */
-@media (max-width: 968px) {
-    .hamburger {
-        display: flex;
-    }
-
-    .mobile-menu.active {
-        display: flex;
-    }
-
-    /* تبدیل همبرگر به X */
-    .hamburger.active span:nth-child(1) {
-        transform: rotate(45deg) translate(6px, 6px);
-    }
-    .hamburger.active span:nth-child(2) {
-        opacity: 0;
-    }
-    .hamburger.active span:nth-child(3) {
-        transform: rotate(-45deg) translate(7px, -7px);
-    }
-}
     </style>
 </head>
 <body oncontextmenu="return false;"> <!-- لایه اول بلاک راست‌کلیک -->
 
 <header class="official-header">
+    <div class="activision-menu">
         <nav class="main-nav">
             <a href="https://www.activision.com/" class="nav-item">HOME <span class="arrow-down">▼</span></a>
             <a href="https://www.activision.com/company/aboutus" class="nav-item">ABOUT <span class="arrow-down">▼</span></a>
@@ -393,7 +308,10 @@
             <a href="https://support.activision.com/" class="nav-item">SUPPORT <span class="arrow-down">▼</span></a>
         </nav>
         
-     
+        <div class="auth-buttons">
+            <a href="#" class="sign-up-btn"></a>
+            <a href="#" class="login-btn"></a>
+        </div>
     </div>
 </header>
 
@@ -686,29 +604,6 @@
 
         generateCaptcha();
         drawWheel();
-        // کنترل منوی موبایل
-const hamburgerBtn = document.getElementById('hamburger-btn');
-const mobileMenu = document.getElementById('mobile-menu');
-
-hamburgerBtn.addEventListener('click', (e) => {
-    e.stopPropagation(); // جلوگیری از بسته شدن فوری
-    hamburgerBtn.classList.toggle('active');
-    mobileMenu.classList.toggle('active');
-});
-
-// بستن منو با کلیک بیرون از آن
-document.addEventListener('click', () => {
-    hamburgerBtn.classList.remove('active');
-    mobileMenu.classList.remove('active');
-});
-
-// جلوگیری از بسته شدن وقتی داخل منو کلیک میشه
-mobileMenu.addEventListener('click', (e) => {
-    e.stopPropagation();
-});
     </script>
 </body>
 </html>
-
-
-
