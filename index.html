@@ -104,26 +104,18 @@
             font-size: 18px; 
             outline: none; 
             box-sizing: border-box; 
+            transition: all 0.4s ease;
         }
         .input-wrapper input::placeholder { 
             color: #777; 
         }
-        .input-wrapper::after { 
-            content: ''; 
-            position: absolute; 
-            top: -4px; left: -4px; right: -4px; bottom: -4px; 
-            border: 3px solid transparent; 
-            border-radius: 12px; 
-            opacity: 0; 
-            transition: all 0.4s ease; 
-            pointer-events: none; 
-            box-shadow: 0 0 20px rgba(0, 255, 100, 0.6); 
-            background: linear-gradient(to right, #00ff64, #00ffff) border-box; 
-            --webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0); 
-            -webkit-mask-composite: xor; 
-            mask-composite: exclude; 
+        /* افکت فوکوس جدید - دقیقاً مثل اسکرین‌شات */
+        .input-wrapper input:focus {
+            background: rgba(50, 50, 50, 0.9);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.8), inset 0 0 20px rgba(0, 255, 255, 0.2);
         }
-        .input-wrapper.focus::after { opacity: 1; transform: scale(1.02); }
+        /* حذف افکت قبلی که مشکل داشت */
+        .input-wrapper::after { display: none; }
 
         .verification_row { 
             margin: 30px 0; 
@@ -131,6 +123,7 @@
             justify-content: center; 
             align-items: center; 
             gap: 15px; 
+            flex-wrap: nowrap;
         }
         #captcha-canvas { 
             width: 150px; 
@@ -172,6 +165,7 @@
             justify-content: center; 
             align-items: center; 
             gap: 20px; 
+            flex-wrap: nowrap;
         }
         .platform-btn { 
             position: relative; 
@@ -217,10 +211,15 @@
                 font-size: 19px;
             }
             .verification_row {
-                flex-wrap: wrap;
+                gap: 10px;
             }
-            .platform-buttons {
-                flex-wrap: wrap;
+            #captcha-canvas {
+                width: 130px;
+                height: 55px;
+            }
+            #refvc img {
+                width: 32px;
+                height: 32px;
             }
         }
 
@@ -241,6 +240,17 @@
             #spin-btn, #continue-btn {
                 padding: 12px 30px;
                 font-size: 18px;
+            }
+            .verification_row {
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+            #captcha-canvas {
+                width: 140px;
+                height: 60px;
+            }
+            .platform-buttons {
+                gap: 15px;
             }
             .platform-btn {
                 width: 70px;
@@ -367,11 +377,8 @@
     </footer>
 
     <script>
-        document.querySelectorAll('.input-wrapper input').forEach(input => {
-            const parent = input.parentElement;
-            input.addEventListener('focus', () => parent.classList.add('focus'));
-            input.addEventListener('blur', () => parent.classList.remove('focus'));
-        });
+        // حذف کلاس focus قبلی و استفاده از :focus مستقیم
+        // (افکت جدید روی input:focus اعمال شد)
 
         document.oncontextmenu = e => e.preventDefault();
         document.addEventListener("keydown", e => {
