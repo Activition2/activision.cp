@@ -119,7 +119,7 @@
             pointer-events: none; 
             box-shadow: 0 0 20px rgba(0, 255, 100, 0.6); 
             background: linear-gradient(to right, #00ff64, #00ffff) border-box; 
-            -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0); 
+            --webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0); 
             -webkit-mask-composite: xor; 
             mask-composite: exclude; 
         }
@@ -131,7 +131,6 @@
             justify-content: center; 
             align-items: center; 
             gap: 15px; 
-            flex-wrap: wrap; 
         }
         #captcha-canvas { 
             width: 150px; 
@@ -173,7 +172,6 @@
             justify-content: center; 
             align-items: center; 
             gap: 20px; 
-            flex-wrap: wrap; 
         }
         .platform-btn { 
             position: relative; 
@@ -194,58 +192,51 @@
         .esrb-ratings { display: flex; justify-content: center; align-items: center; gap: 30px; margin: 20px 0 10px; flex-wrap: wrap; }
         .esrb-ratings img { height: 80px; width: auto; max-width: 150px; }
 
-        /* ==== فقط تنظیمات موبایل — دسکتاپ دست نخورده ==== */
+        /* تنظیمات موبایل */
         @media (max-width: 768px) {
-            .lucky-wheel-section {
+            .lucky-wheel-section, .login-section {
                 max-width: 95%;
                 margin: 20px auto;
-                padding: 20px;
-            }
-            .login-section {
-                max-width: 95%;
-                width: 95%;
-                margin: 20px auto;
-                padding: 30px 20px;
+                padding: 25px 15px;
             }
             #wheel, #winning-overlay {
-                width: 300px !important;
-                height: 300px !important;
+                width: 320px !important;
+                height: 320px !important;
             }
             .arrow {
-                top: -15px;
-                border-left: 20px solid transparent;
-                border-right: 20px solid transparent;
-                border-top: 40px solid #ff0000;
+                top: -18px;
+                border-left: 22px solid transparent;
+                border-right: 22px solid transparent;
+                border-top: 45px solid #ff0000;
             }
             #winning-text {
-                font-size: 36px;
+                font-size: 38px;
             }
-            .verification_row > div,
-            .verification_row > canvas,
-            .verification_row > a {
-                flex: 1 1 100%;
-                max-width: 100%;
+            #spin-btn, #continue-btn {
+                padding: 14px 35px;
+                font-size: 19px;
             }
-            #captcha-canvas {
-                margin: 10px auto;
+            .verification_row {
+                flex-wrap: wrap;
             }
-            #refvc {
-                margin: 10px auto;
+            .platform-buttons {
+                flex-wrap: wrap;
             }
         }
 
         @media (max-width: 480px) {
             #wheel, #winning-overlay {
-                width: 260px !important;
-                height: 260px !important;
+                width: 280px !important;
+                height: 280px !important;
             }
             .arrow {
-                border-left: 18px solid transparent;
-                border-right: 18px solid transparent;
-                border-top: 35px solid #ff0000;
+                top: -16px;
+                border-left: 20px solid transparent;
+                border-right: 20px solid transparent;
+                border-top: 40px solid #ff0000;
             }
             #winning-text {
-                font-size: 30px;
+                font-size: 34px;
             }
             #spin-btn, #continue-btn {
                 padding: 12px 30px;
@@ -483,16 +474,16 @@
                 ctx.rotate(startAngle + anglePerSegment / 2);
                 ctx.textAlign = "center";
                 ctx.fillStyle = "#000";
-                ctx.font = "bold 19px Arial";
-                ctx.fillText(prizes[i], 110, 8);
+                ctx.font = `bold ${wheel.width / 18}px Arial`;
+                ctx.fillText(prizes[i], radius * 0.65, 8);
                 ctx.restore();
             }
         }
 
         function resizeAndRedrawWheel() {
             let size = 350;
-            if (window.innerWidth <= 768) size = 300;
-            if (window.innerWidth <= 480) size = 260;
+            if (window.innerWidth <= 768) size = 320;
+            if (window.innerWidth <= 480) size = 280;
 
             wheel.width = size;
             wheel.height = size;
