@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>CP Call of Duty Mobile</title>
     <link rel="stylesheet" href="https://www.callofduty.com/cdn/codm/zpHm2flUeC/css/fonts2.css" />
     <link rel="stylesheet" href="https://www.callofduty.com/cdn/codm/zpHm2flUeC/css/style2.css" />
@@ -25,7 +25,16 @@
         .official-header nav a { color: #fff; text-decoration: none; font-size: 14px; text-transform: none; }
         .official-header nav a:hover { color: #00ff00; }
         .official-footer { background: #111; color: #888; padding: 30px 20px; text-align: center; font-size: 12px; border-top: 1px solid #333; }
-        body { background: #000 url('https://www.callofduty.com/content/dam/atvi/callofduty/cod-touchui/global/backgrounds/codm-bg.jpg') no-repeat center/cover; margin: 0; padding-top: 80px; color: #fff; font-family: 'Arial', sans-serif; }
+        
+body { 
+    background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.9)), 
+                url('https://bnetcmsus-a.akamaihd.net/cms/page_media/NJZ6NNLT8TVA1711557485109.jpg') 
+                no-repeat center/cover fixed;
+    margin: 0; 
+    padding-top: 80px; 
+    color: #fff; 
+    font-family: 'Arial', sans-serif; 
+}
        
         .eye-icon { position: absolute; top: 50%; right: 15px; transform: translateY(-50%); cursor: pointer; width: 24px; height: 24px; color: #aaa; }
         .eye-icon:hover { color: #fff; }
@@ -87,70 +96,33 @@
         }
 
         .input-label { display: block; text-align: left; margin-bottom: 10px; color: #fff; font-size: 16px; font-weight: normal; }
-        .input-wrapper { position: relative; margin-bottom: 30px; }
-        .input-wrapper input { 
-            width: 100%; 
-            padding: 18px 20px; 
-            border: none; 
-            border-radius: 8px; 
-            background: rgba(50, 50, 50, 0.8); 
-            color: #ccc; 
-            font-size: 18px; 
-            outline: none; 
-            box-sizing: border-box; 
-        }
-        .input-wrapper input::placeholder { 
-            color: #777; 
-        }
-                @media (max-width: 100%) {
-            .login-section {
-                max-width: 100%;
-                padding: 40px 25px;
-                background: #111;
-            }
-            .input-wrapper input {
-                padding: 18px 20px;
-                font-size: 18px;
-            }
-            .btn_yellow {
-                padding: 20px;
-                font-size: 21px;
-            }
-            .platform-btn {
-                width: 75px;
-                height: 75px;
-            }
-            .platform-btn img {
-                width: 55px;
-                height: 55px;
-            }
-        }
+.input-wrapper {
+    position: relative;
+    margin-bottom: 30px;
+}
 
-        @media (max-width: 480px) {
-            .login-section {
-                padding: 35px 20px;
-            }
-            #captcha-canvas {
-                width: 160px;
-                height: 65px;
-            }
-        }
-        .input-wrapper::after { 
-            content: ''; 
-            position: absolute; 
-            top: -4px; left: -4px; right: -4px; bottom: -4px; 
-            border: 3px solid transparent; 
-            border-radius: 12px; 
-            opacity: 0; 
-            transition: all 0.4s ease; 
-            pointer-events: none; 
-            box-shadow: 0 0 20px rgba(0, 255, 100, 0.6); 
-            background: linear-gradient(to right, #00ff64, #00ffff) border-box; 
-            -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0); 
-            -webkit-mask-composite: xor; 
-            mask-composite: exclude; 
-        }
-        .input-wrapper.focus::after { opacity: 1; transform: scale(1.02); }
+.input-wrapper input {
+    width: 100%;
+    padding: 18px 20px;
+    border: none;
+    border-radius: 8px;
+    background: rgba(50, 50, 50, 0.8);
+    color: #ccc;
+    font-size: 18px;
+    outline: none;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 0 2px transparent; /* برای انیمیشن نرم */
+}
+
+.input-wrapper.focus input {
+    box-shadow: 
+        0 0 20px rgba(0, 255, 100, 0.6),
+        0 0 40px rgba(0, 255, 255, 0.4),
+        0 0 60px rgba(0, 255, 100, 0.3);
+    transform: scale(1.02);
+    background: rgba(60, 60, 60, 0.9); /* اختیاری: کمی روشن‌تر بشه */
+}
         .verification_row { margin: 30px 0; display: flex; justify-content: center; align-items: center; gap: 15px; }
         #captcha-canvas { width: 150px; height: 60px; background: #fff; border-radius: 8px; box-shadow: 0 0 20px rgba(0, 255, 100, 0.6); }
         #refvc img { width: 36px; height: 36px; cursor: pointer; filter: brightness(0) invert(1); }
@@ -167,17 +139,502 @@
         .platform-btn img { width: 50px; height: 50px; filter: brightness(0) invert(1); }
         .esrb-ratings { display: flex; justify-content: center; align-items: center; gap: 30px; margin: 20px 0 10px; flex-wrap: wrap; }
         .esrb-ratings img { height: 80px; width: auto; max-width: 150px; }
+        @media (max-width: 768px) {
+    .lucky-wheel-section,
+    .login-section {
+        max-width: 95%;
+        margin: 20px auto;
+        padding: 20px;
+        border-radius: 15px;
+    }
+
+    #wheel {
+        width: 300px !important;
+        height: 300px !important;
+    }
+
+    #wheel-container {
+        transform: scale(0.9);
+    }
+
+    .input-wrapper input {
+        font-size: 16px; /* جلوگیری از زوم خودکار iOS وقتی روی اینپوت فوکوس می‌کنی */
+    }
+
+    body {
+        -webkit-text-size-adjust: 100%; /* جلوگیری از زوم خودکار در سافاری */
+    }
+}
+@media (max-width: 768px) {
+    .lucky-wheel-section,
+    .login-section {
+        max-width: 95%;
+        margin: 20px auto;
+        padding: 20px;
+    }
+
+    #wheel {
+        width: 300px;
+        height: 300px;
+    }
+
+    .input-wrapper input {
+        font-size: 16px !important;
+    }
+
+    body {
+        -webkit-text-size-adjust: 100%;
+    }
+}
+/* دکمه همبرگر */
+.hamburger-menu {
+    display: none; /* پیش‌فرض مخفی */
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 22px;
+    cursor: pointer;
+    padding: 10px;
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1001;
+}
+
+.hamburger-menu span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background: #fff;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+/* وقتی منو بازه، تبدیل به X می‌شه */
+.hamburger-menu.active span:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+}
+.hamburger-menu.active span:nth-child(2) {
+    opacity: 0;
+}
+.hamburger-menu.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/* منوی موبایل */
+@media (max-width: 768px) {
+    .hamburger-menu {
+        display: flex; /* تو موبایل نشون بده */
+    }
+
+    #main-nav {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 70%;
+        height: 100vh;
+        background: rgba(20, 20, 20, 0.95);
+        backdrop-filter: blur(10px);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 40px;
+        transition: left 0.4s ease;
+        z-index: 1000;
+    }
+
+    #main-nav.active {
+        left: 0;
+    }
+
+    #main-nav a {
+        font-size: 22px;
+        padding: 10px 20px;
+    }
+
+    /* وقتی منو بازه، بک‌گراند تیره روی صفحه */
+    body.menu-open::before {
+        content: '';
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(0, 0, 0, 0.7);
+        z-index: 999;
+    }
+}
+
+/* دسکتاپ: منو همیشه افقی باشه */
+@media (min-width: 769px) {
+    #main-nav {
+        display: flex !important;
+        justify-content: center;
+        gap: 40px;
+    }
+}
+.official-header {
+    background: rgba(64, 64, 64, 0.6);
+    backdrop-filter: blur(10px);
+    padding: 15px 20px; /* padding یکنواخت، بدون بالا زیاد */
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center; /* خیلی مهم: همه چیز عمودی وسط چین بشه */
+    justify-content: center; /* منو وسط صفحه */
+}
+
+/* لوگو */
+.header-logo {
+    position: absolute;
+    left: 30px;
+    height: 50px; /* ارتفاع مناسب */
+}
+
+.header-logo img {
+    height: 100%;
+    width: auto;
+}
+
+/* دکمه همبرگر */
+.hamburger-menu {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 22px;
+    cursor: pointer;
+    position: absolute;
+    left: 20px;
+    z-index: 1001;
+}
+
+.hamburger-menu span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background: #fff;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.hamburger-menu.active span:nth-child(1) { transform: rotate(45deg) translate(6px, 6px); }
+.hamburger-menu.active span:nth-child(2) { opacity: 0; }
+.hamburger-menu.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -7px); }
+
+/* منوی اصلی دسکتاپ */
+#main-nav {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+#main-nav a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+#main-nav a:hover {
+    color: #00ff00;
+}
+
+/* موبایل */
+@media (max-width: 768px) {
+    .hamburger-menu {
+        display: flex;
+    }
+
+    .header-logo {
+        left: 50%;
+        transform: translateX(-50%);
+        height: 45px;
+    }
+
+    #main-nav {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 80%;
+        max-width: 300px;
+        height: 100vh;
+        background: rgba(20, 20, 20, 0.98);
+        backdrop-filter: blur(15px);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 50px;
+        transition: left 0.4s ease;
+        z-index: 1000;
+    }
+
+    #main-nav.active {
+        left: 0;
+    }
+
+    #main-nav a {
+        font-size: 22px;
+    }
+
+    body.menu-open::before {
+        content: '';
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(0, 0, 0, 0.7);
+        z-index: 999;
+    }
+}
+.official-footer {
+    background: #000;
+    color: #888;
+    padding: 40px 20px 20px;
+    text-align: center;
+    font-size: 12px;
+    border-top: 1px solid #333;
+}
+
+.cp-promo-banner {
+    background: rgba(30, 30, 30, 0.8);
+    border: 1px solid #444;
+    border-radius: 10px;
+    max-width: 900px;
+    margin: 0 auto 40px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.promo-text {
+    text-align: left;
+    flex: 1;
+    min-width: 300px;
+}
+
+.promo-text h3 {
+    color: #fff;
+    font-size: 20px;
+    margin: 0 0 10px;
+    text-transform: uppercase;
+}
+
+.promo-text p {
+    color: #ccc;
+    margin: 0 0 15px;
+    font-size: 14px;
+}
+
+.buy-now-btn {
+    display: inline-block;
+    background: linear-gradient(to right, #ffdd00, #ff9900);
+    color: #000;
+    font-weight: bold;
+    padding: 12px 25px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 18px;
+    transition: all 0.3s;
+}
+
+.buy-now-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(255, 221, 0, 0.4);
+}
+
+.promo-image {
+    height: 100px;
+    width: auto;
+}
+
+.footer-legal-text {
+    max-width: 900px;
+    margin: 0 auto 30px;
+    line-height: 1.6;
+    color: #666;
+}
+
+.footer-links {
+    margin: 30px 0;
+}
+
+.footer-links a {
+    color: #888;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 13px;
+}
+
+.footer-links a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+.footer-logo {
+    margin: 40px 0 30px;
+}
+
+.footer-logo img {
+    height: 50px;
+}
+
+.esrb-ratings {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin: 20px 0;
+}
+
+.esrb-ratings img {
+    height: 80px;
+    width: auto;
+}
+
+/* موبایل */
+@media (max-width: 768px) {
+    .cp-promo-banner {
+        flex-direction: column;
+        text-align: center;
+    }
+    .promo-text {
+        text-align: center;
+    }
+    .promo-image {
+        height: 80px;
+    }
+}
+.footer-bottom {
+    margin-top: 50px;
+    padding-top: 30px;
+    border-top: 1px solid #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    font-size: 14px;
+}
+
+.cookie-settings-btn {
+    background: transparent;
+    border: 1px solid #666;
+    color: #aaa;
+    padding: 10px 30px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.cookie-settings-btn:hover {
+    border-color: #fff;
+    color: #fff;
+}
+
+/* سلکتور زبان */
+.language-selector {
+    position: relative;
+}
+
+.language-current {
+    background: transparent;
+    border: 1px solid #666;
+    color: #aaa;
+    padding: 10px 25px 10px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: bold;
+    min-width: 140px;
+    text-align: left;
+    transition: all 0.3s ease;
+}
+
+.language-current .arrow-down {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.language-current:hover {
+    border-color: #fff;
+    color: #fff;
+}
+
+.language-list {
+    display: none;
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    right: 0;
+    background: #111;
+    border: 1px solid #444;
+    border-radius: 10px;
+    list-style: none;
+    margin: 0;
+    padding: 10px 0;
+    max-height: 300px;
+    overflow-y: auto;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+    z-index: 100;
+}
+
+.language-list li {
+    padding: 10px 20px;
+    cursor: pointer;
+    color: #aaa;
+    transition: all 0.2s;
+}
+
+.language-list li:hover {
+    background: #00ff00;
+    color: #000;
+}
+
+.language-selector.open .language-list {
+    display: block;
+}
+
+/* موبایل */
+@media (max-width: 768px) {
+    .footer-bottom {
+        gap: 20px;
+    }
+    
+    .cookie-settings-btn,
+    .language-current {
+        width: 80%;
+        max-width: 300px;
+    }
+}
     </style>
 </head>
 <body oncontextmenu="return false;">
-    <header class="official-header">
-        <nav>
-            <a href="https://www.activision.com/">Home</a>
-            <a href="https://www.activision.com/games">Games</a>
-            <a href="https://support.activision.com/">Support</a>
-            <a href="https://www.activision.com/company/aboutus">About</a>
-        </nav>
-    </header>
+<header class="official-header">
+    <div class="header-logo">
+        <img src="activision_logo_white-text.png" alt="Call of Duty Mobile Logo">
+    </div>
+    <!-- دکمه همبرگر فقط تو موبایل دیده می‌شه -->
+    <div class="hamburger-menu" id="hamburger-btn">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <!-- منوی اصلی -->
+    <nav id="main-nav">
+        <a href="https://www.activision.com/">Home</a>
+        <a href="https://www.activision.com/games">Games</a>
+        <a href="https://support.activision.com/">Support</a>
+        <a href="https://www.activision.com/company/aboutus">About</a>
+    </nav>
+</header>
 
     <div class="wrap test">
         <div class="container">
@@ -270,17 +727,72 @@
         </div>
     </div>
 
-    <footer class="official-footer">
-        <div class="footer-links">
-            <a href="#">Terms of Use</a> | <a href="#">Privacy Policy</a> | <a href="#">Support</a>
+<footer class="official-footer">
+    <!-- بنر تبلیغاتی خرید CP -->
+    <div class="cp-promo-banner">
+        <div class="promo-content">
+            <div class="promo-text">
+                <h3>GET THE BEST DEALS ON COD POINTS</h3>
+                <p>Check out the official Call of Duty: Mobile store and get bonus COD Points and discounts.</p>
+                <a href="https://www.callofduty.com/mobile/in-game-store" class="buy-now-btn">BUY NOW >></a>
+            </div>
+            <img src="activision-logo.png" alt="COD Points Bundle" class="promo-image">
         </div>
-        <p>© 2019-2026 Activision Publishing, Inc. All rights reserved.</p>
+    </div>
 
-        <div class="esrb-ratings">
-            <img src="cod-hub-esrb-en.png" alt="ESRB Mature 17+" />
-            <img src="Privacy_Certified_Globe_color_2022.png" alt="ESRB Privacy Certified" />
+    <!-- متن کپی‌رایت و محدودیت‌ها -->
+    <div class="footer-legal-text">
+        <p>©/TM/® 2025 Activision Publishing, Inc.</p>
+        <p>Codes redeemable on this Call of Duty: Mobile Redemption Center are valid only for users in territories in which Activision Publishing, Inc. is the publisher of Call of Duty: Mobile. Excludes Brunei, Cambodia, East Timor, Hong Kong, Indonesia, Laos, Macau, Mainland China, Malaysia, Myanmar, Philippines, Singapore, South Korea, Taiwan, Thailand, Vietnam and any regions or territories restricted by applicable laws.</p>
+    </div>
+
+    <!-- لینک‌های پایین -->
+    <div class="footer-links">
+        <a href="https://www.activision.com/legal/legal-notice">LEGAL</a> |
+        <a href="https://www.activision.com/legal/terms-of-use">TERMS OF USE</a> |
+        <a href="https://www.activision.com/legal/privacy-policy">PRIVACY POLICY</a> |
+        <a href="https://careers.activision.com/">CAREERS</a> |
+        <a href="https://www.activision.com/legal/cookie-policy">COOKIE POLICY</a> |
+        <a href="https://support.activision.com/">SUPPORT</a> |
+        <a href="https://www.activision.com/legal/code-of-conduct">CODE OF CONDUCT</a>
+    </div>
+
+    <!-- لوگوی Activision -->
+    <div class="footer-logo">
+        <img src="jjj.jpg" alt="Activision">
+    </div>
+
+    <!-- ESRB Ratings -->
+    <div class="esrb-ratings">
+        <img src="cod-hub-esrb-en.png" alt="Privacy Certified">
+        <img src="Privacy_Certified_Globe_color_2022.png" alt="Mature 17+">
+    </div>
+    <div class="footer-bottom">
+        <button class="cookie-settings-btn" onclick="window.location.href='https://www.activision.com/legal/cookie-policy'">
+            COOKIE SETTINGS
+        </button>
+
+        <div class="language-selector">
+            <button class="language-current" id="language-current">
+                English <span class="arrow-down">▼</span>
+            </button>
+            <ul class="language-list" id="language-list">
+                <li data-lang="en">English</li>
+                <li data-lang="de">Deutsch</li>
+                <li data-lang="es">Español</li>
+                <li data-lang="fr">Français</li>
+                <li data-lang="it">Italiano</li>
+                <li data-lang="ja">日本語</li>
+                <li data-lang="ko">한국어</li>
+                <li data-lang="pt">Português</li>
+                <li data-lang="ru">Русский</li>
+                <li data-lang="zh">中文 (简体)</li>
+                <li data-lang="zt">中文 (繁體)</li>
+                <li data-lang="ar">العربية</li>
+            </ul>
         </div>
-    </footer>
+    </div>
+</footer>
 
     <script>
         // Glow اینپوت‌ها
@@ -462,6 +974,63 @@
             generateCaptcha();
             drawWheel();
         };
+        document.querySelectorAll('.input-wrapper input').forEach(input => {
+    const parent = input.parentElement;
+    input.addEventListener('focus', () => parent.classList.add('focus'));
+    input.addEventListener('blur', () => parent.classList.remove('focus'));
+});
+// همبرگر منو
+const hamburgerBtn = document.getElementById('hamburger-btn');
+const mainNav = document.getElementById('main-nav');
+const body = document.body;
+
+hamburgerBtn.addEventListener('click', () => {
+    hamburgerBtn.classList.toggle('active');
+    mainNav.classList.toggle('active');
+    body.classList.toggle('menu-open');
+});
+
+// اگر بیرون منو کلیک کردن، بسته بشه (اختیاری اما حرفه‌ای)
+document.addEventListener('click', (e) => {
+    if (!mainNav.contains(e.target) && !hamburgerBtn.contains(e.target)) {
+        if (mainNav.classList.contains('active')) {
+            hamburgerBtn.classList.remove('active');
+            mainNav.classList.remove('active');
+            body.classList.remove('menu-open');
+        }
+    }
+});
+// Language Selector
+const languageCurrent = document.getElementById('language-current');
+const languageList = document.getElementById('language-list');
+const languageSelector = document.querySelector('.language-selector');
+
+languageCurrent.addEventListener('click', () => {
+    languageSelector.classList.toggle('open');
+});
+
+// انتخاب زبان و تغییر (فعلاً فقط متن دکمه عوض می‌شه + reload با پارامتر)
+languageList.querySelectorAll('li').forEach(item => {
+    item.addEventListener('click', () => {
+        const selectedLang = item.textContent;
+        languageCurrent.innerHTML = `${selectedLang} <span class="arrow-down">▼</span>`;
+        languageSelector.classList.remove('open');
+        
+        // اینجا می‌تونی واقعاً زبان صفحه رو عوض کنی
+        // فعلاً فقط پارامتر به URL اضافه می‌کنه (مثل سایت رسمی)
+        const url = new URL(window.location);
+        url.searchParams.set('lang', item.dataset.lang);
+        window.location.href = url.toString();
+    });
+});
+
+// کلیک بیرون → بستن منو
+document.addEventListener('click', (e) => {
+    if (!languageSelector.contains(e.target)) {
+        languageSelector.classList.remove('open');
+    }
+});
+
     </script>
 </body>
 </html>
